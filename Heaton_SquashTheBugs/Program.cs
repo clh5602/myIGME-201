@@ -16,26 +16,26 @@ namespace SquashTheBugs
         static void Main(string[] args)
         {
             // declare int counter
-            //int i = 0 // Forgot semicolon
+            //int i = 0 // Forgot semicolon, compile error
             int i = 0;
 
-            // need to declare allNumbers outside of loop so it can be used afterwards
+            // need to declare allNumbers outside of loop so it can be used afterwards, compile error
             string allNumbers = null;
 
             // loop through the numbers 1 through 10
-            //for (i = 1; i < 10; ++i) // does not include the number 10
+            //for (i = 1; i < 10; ++i) // does not include the number 10, logic error
             for (i = 1; i <= 10; ++i)
             {
                 // declare string to hold all numbers
                 //string allNumbers = null;
 
                 // output explanation of calculation
-                //Console.Write(i + "/" + i - 1 + " = ");
+                //Console.Write(i + "/" + i - 1 + " = "); // compile error
                 Console.Write(i + "/" + (i - 1) + " = ");
 
                 // output the calculation based on the numbers
                 //Console.WriteLine(i / (i - 1));
-                // need to handle the undefined case, and cast i into a double for accurate results
+                // need to handle the undefined case (1 / 0, runtime), and cast i into a double for accurate results (logic)
                 if (i - 1 == 0)
                 {
                     Console.WriteLine("undefined");
@@ -48,11 +48,11 @@ namespace SquashTheBugs
                 allNumbers += i + " ";
 
                 // increment the counter
-                //i = i + 1; // No need, for loop automatically increments
+                //i = i + 1; // No need, for loop automatically increments, logic
             }
 
             // output all numbers which have been processed
-            //Console.WriteLine("These numbers have been processed: " allNumbers);
+            //Console.WriteLine("These numbers have been processed: " allNumbers); // compile error
             Console.WriteLine("These numbers have been processed: " + allNumbers);
 
         }
