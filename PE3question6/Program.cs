@@ -19,9 +19,8 @@ namespace PE3question6
         //                 did not enter an integer. This could be fixed with while loops and the tryParse method.
         static void Main(string[] args)
         {
-            Console.Write("Please enter an integer: ");
             int numOne = Convert.ToInt32(Console.ReadLine());
-
+            Console.Write(numOne);
             Console.Write("Please enter another integer: ");
             int numTwo = Convert.ToInt32(Console.ReadLine());
 
