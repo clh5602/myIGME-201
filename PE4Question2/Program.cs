@@ -9,7 +9,7 @@ namespace PE4Question2
     // Class Program
     // Author: Colby Heaton
     // Purpose: Hosts the Main method
-    // Restrictions: None
+    // Restrictions: None 
     static internal class Program
     {
         // Method: Main
