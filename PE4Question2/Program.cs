@@ -20,6 +20,20 @@ namespace PE4Question2
         {
             int num1 = 0;
             int num2 = 0;
+            string favoriteFood = "spaghetti";
+            switch ("spaghetti")
+            {
+                case ("spaghetti"):
+                    Console.WriteLine("You seem to really like spaghetti");
+                    break;
+                case ("cake"):
+                    Console.WriteLine("Wrong. Spaghetti is the best food.");
+                    break;
+                default:
+                    Console.WriteLine("You should like spaghetti.");
+                    break;
+            }
+
 
             while (!(num1 > 10 ^ num2 > 10)) // Main loop, checking for either num1 or num2 to be > 10, but not both.
             {
