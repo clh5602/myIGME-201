@@ -14,7 +14,7 @@ namespace Heaton_PE7
     static internal class Program
     {
         // Method: Main
-        // Purpose: Read a txt file to load various MadLibs stories
+        // Purpose: Read a txt file to load various MadLibs stories 
         //          Ask the user which story they'd like to play
         //          Seperate each story into individual words
         //          Step through each word and add it to the final result
