@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +15,9 @@ namespace Heaton_PE8
     internal class Program
     {
         // Method: Main
-        // Purpose: Test int / string interactions, operate the "FizzBuzz" loop,
-        //          reduce a number with a while loop, and print my name to the console.
-        // Restrictions: type casting seems to work strangely
+        // Purpose: Generate a 3D array that stores X, Y, and Z values.
+        //          Allow the user to search through the generated array.
+        // Restrictions: None
         static void Main(string[] args)
         {
             double[,,] formulaTests = new double[21, 31, 3];
