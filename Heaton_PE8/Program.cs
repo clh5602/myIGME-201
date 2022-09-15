@@ -12,7 +12,7 @@ namespace Heaton_PE8
     // Author: Colby Heaton
     // Purpose: Hosts the Main method
     // Restrictions: None
-    internal class Program
+    internal static class Program
     {
         // Method: Main
         // Purpose: Generate a 3D array that stores X, Y, and Z values.
