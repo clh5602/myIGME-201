@@ -10,7 +10,7 @@ namespace Heaton_PE8_8
     // Author: Colby Heaton
     // Purpose: Hosts the Main method
     // Restrictions: None
-    internal class Program
+    internal static class Program
     {
         // Method: Main
         // Purpose: Prompts the user for a phrase, will replace all cases of the word "no" with "yes", with special cases for capitalization
