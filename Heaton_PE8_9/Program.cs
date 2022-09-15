@@ -10,7 +10,7 @@ namespace Heaton_PE8_9
     // Author: Colby Heaton
     // Purpose: Hosts the Main method
     // Restrictions: None
-    internal class Program
+    internal static class Program
     {
         // Method: Main
         // Purpose: Prompts the user for a phrase, will surround all words with quotation marks.
