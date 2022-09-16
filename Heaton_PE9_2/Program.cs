@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Heaton_PE9_2
 {
     internal static class Program
-    {
+    { 
         static void Main(string[] args)
         {
             // store user name
