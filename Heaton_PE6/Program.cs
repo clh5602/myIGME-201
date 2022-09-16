@@ -33,6 +33,7 @@ namespace Heaton_PE6
 
             // Print the random number
             Console.WriteLine(randomNumber);
+            Console.WriteLine("Try to guess the random number between 0-100 - you have 8 tries!");
 
             // Begin a for loop for # of attempts
             for (numAttempts = 1; numAttempts <= MAX_ATTEMPTS; ++numAttempts)

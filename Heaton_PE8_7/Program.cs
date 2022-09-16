@@ -10,7 +10,7 @@ namespace Heaton_PE8_7
     // Author: Colby Heaton
     // Purpose: PE8 question 7
     // Restrictions: None
-    internal class Program
+    internal static class Program
     {
         // Method: Main
         // Purpose: Prompt the user to input a string, and output a string in the reverse order.
