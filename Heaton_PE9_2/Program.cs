@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Heaton_PE9_2
 {
+    // Class Program
+    // Author: David Schuh, Colby Heaton
+    // Purpose: PE9 Question 2, implement a timer to "Math Quiz"
+    // Restrictions: None
     internal static class Program
-    { 
+    {
+        // Add new class variables
+        static bool timeOut = false;
+        static Timer timeOutTimer;
+        
+        // Method: Main
+        // Purpose: Prompt the user for their name, difficulty, and number of questions.
+        //          Execute a math quiz where the user must input the correct answer.
+        //          NEW: A 5 second timer has been added to each question. The question will be
+        //          marked incorrect no matter the answer if time is expired.
+        // Restrictions: None
         static void Main(string[] args)
         {
             // store user name
@@ -164,8 +179,15 @@ namespace Heaton_PE9_2
                 }
 
                 // display the question and prompt for the answer
-                do
+                bValid = false;
+                timeOut = false;
+                while (!bValid && !timeOut) // Timer check
                 {
+                    timeOutTimer = new Timer(5000); // Create 5 second timer
+
+                    timeOutTimer.Elapsed += TimesUp; // Connect it to the method for time being up
+                    timeOutTimer.Start(); // Begin the countdown, will call the method when time is up
+
                     Console.Write(sQuestions);
                     sResponse = Console.ReadLine();
 
@@ -180,11 +202,12 @@ namespace Heaton_PE9_2
                         bValid = false;
                     }
 
-                } while (!bValid);
-
+                }
+                
+                timeOutTimer.Stop(); // stop the timer
                 // if response == answer, output flashy reward and increment # correct
                 // else output stark answer
-                if (nResponse == nAnswer)
+                if (!timeOut && nResponse == nAnswer) // if time was out, default to incorrect
                 {
                     Console.BackgroundColor = ConsoleColor.Blue;
                     Console.ForegroundColor = ConsoleColor.Magenta;
@@ -227,6 +250,18 @@ namespace Heaton_PE9_2
                     break;
                 }
             } while (true);
+        }
+
+        // Method: Main
+        // Purpose: Called when the timer is expired. Prints a message to the conole, and marks the current
+        //          question as incorrect.
+        // Restrictions: This method will not stop or interrupt the Console.ReadLine(), so the user must still
+        //               Press Enter, and they are still able to type to the console.
+        static void TimesUp(object sender, ElapsedEventArgs e)
+        {
+            Console.WriteLine("\nTime is up! Please press Enter.");
+            timeOutTimer.Stop();
+            timeOut = true;
         }
     }
 }
