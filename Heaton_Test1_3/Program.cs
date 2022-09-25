@@ -51,7 +51,7 @@ namespace Heaton_Test1_3
         }
 
         // Method: ReadNumber
-        // Purpose: use in place of Math.Round, returns a return
+        // Purpose: use in place of Math.Round, returns a double
         // Restrictions: None
         static double RoundNumber(double num, int precision)
         {
