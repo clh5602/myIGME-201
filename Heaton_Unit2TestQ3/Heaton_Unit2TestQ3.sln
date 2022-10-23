@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heaton_Unit2TestQ3", "Heaton_Unit2TestQ3.csproj", "{597E0BDA-C0B7-4968-9841-2F6D5DB29D2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{597E0BDA-C0B7-4968-9841-2F6D5DB29D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{597E0BDA-C0B7-4968-9841-2F6D5DB29D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{597E0BDA-C0B7-4968-9841-2F6D5DB29D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{597E0BDA-C0B7-4968-9841-2F6D5DB29D2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2DF9C22-3821-4653-8733-F31A5352658B}
+	EndGlobalSection
+EndGlobal
