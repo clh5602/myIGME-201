@@ -14,7 +14,7 @@ namespace Heaton_Unit2TestQ910
     internal class Program
     {
         // Method: Main
-        // Purpose: Read a txt file to load various MadLibs stories 
+        // Purpose: Create instances of the derived classes, and use each instance to call the same method. 
         // Restrictions: None
         static void Main(string[] args)
         {
