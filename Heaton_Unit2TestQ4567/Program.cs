@@ -144,24 +144,48 @@ namespace Heaton_Unit2TestQ4567
 
         public static bool operator <(Tardis a, Tardis b)
         {
+            if (a.whichDrWho == 10 && b.whichDrWho == 10)
+            {
+                return false;
+            }
             if (a.whichDrWho == 10)
             {
                 return false;
+            }
+            if (b.whichDrWho == 10)
+            {
+                return true;
             }
             return a.whichDrWho < b.whichDrWho;
         }
         public static bool operator >(Tardis a, Tardis b)
         {
+            if (a.whichDrWho == 10 && b.whichDrWho == 10)
+            {
+                return false;
+            }
             if (b.whichDrWho == 10)
             {
                 return false;
+            }
+            if (a.whichDrWho == 10)
+            {
+                return true;
             }
             return a.whichDrWho > b.whichDrWho;
         }
 
         public static bool operator <=(Tardis a, Tardis b)
         {
-            if (a.whichDrWho == 10 && b.whichDrWho != 10)
+            if (a.whichDrWho == 10 && b.whichDrWho == 10)
+            {
+                return true;
+            }
+            if (b.whichDrWho == 10)
+            {
+                return true;
+            }
+            if (a.whichDrWho == 10)
             {
                 return false;
             }
@@ -169,9 +193,17 @@ namespace Heaton_Unit2TestQ4567
         }
         public static bool operator >=(Tardis a, Tardis b)
         {
-            if (b.whichDrWho == 10 && a.whichDrWho != 10)
+            if (a.whichDrWho == 10 && b.whichDrWho == 10)
+            {
+                return true;
+            }
+            if (b.whichDrWho == 10)
             {
                 return false;
+            }
+            if (a.whichDrWho == 10)
+            {
+                return true;
             }
             return a.whichDrWho >= b.whichDrWho;
         }
