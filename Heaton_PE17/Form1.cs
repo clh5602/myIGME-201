@@ -16,6 +16,9 @@ namespace Heaton_PE17
         {
             InitializeComponent();
             this.startButton.Click += new EventHandler(this.StartButton_Click);
+
+            this.highTextBox.KeyPress += new KeyPressEventHandler(this.TextBoxes__KeyPress);
+            this.lowTextBox.KeyPress += new KeyPressEventHandler(this.TextBoxes__KeyPress);
         }
 
         private void StartButton_Click(object sender, EventArgs e)
@@ -27,8 +30,8 @@ namespace Heaton_PE17
             // convert the strings entered in lowTextBox and highTextBox
             // to lowNumber and highNumber Int32.Parse
 
-            if (!Int32.TryParse(lowTextBox.Text, out lowNumber)) { MessageBox.Show("The numbers are invalid."); return; }
-            if (!Int32.TryParse(highTextBox.Text, out highNumber)) { MessageBox.Show("The numbers are invalid."); return; }
+            if (!Int32.TryParse(lowTextBox.Text, out lowNumber)) { MessageBox.Show("The low number is invalid."); return; }
+            if (!Int32.TryParse(highTextBox.Text, out highNumber)) { MessageBox.Show("The high number is invalid."); return; }
 
             // if not a valid range
             if (lowNumber > highNumber)
@@ -46,6 +49,13 @@ namespace Heaton_PE17
                 // display the form as a modal dialog, 
                 // which makes the first form inactive
                 gameForm.ShowDialog();
+            }
+        }
+        private void TextBoxes__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
