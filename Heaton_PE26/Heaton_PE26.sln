@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heaton_PE26", "Heaton_PE26.csproj", "{BFC336C4-2281-47A3-AF70-6C0DEF1024F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFC336C4-2281-47A3-AF70-6C0DEF1024F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC336C4-2281-47A3-AF70-6C0DEF1024F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC336C4-2281-47A3-AF70-6C0DEF1024F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC336C4-2281-47A3-AF70-6C0DEF1024F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BD2522B-968D-49EC-AB5B-17021E0BF30B}
+	EndGlobalSection
+EndGlobal
