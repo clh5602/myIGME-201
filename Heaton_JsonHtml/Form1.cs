@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using PeopleAppGlobals;
 using PeopleLib;
 using System.IO;
+using System.Net;
 
 namespace Heaton_JsonHtml
 {
@@ -70,6 +71,17 @@ namespace Heaton_JsonHtml
             {
                 people[teacher.email] = teacher;
             }
+
+            string url = "http://people.rit.edu/dxsigm/json.php";
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            reader = new StreamReader(response.GetResponseStream());
+            t = reader.ReadToEnd();
+            reader.Close();
+            response.Close();
+
+            teachers = JsonConvert.DeserializeObject<List<Teacher>>(t);
 
         }
     }
