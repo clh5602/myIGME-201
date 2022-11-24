@@ -54,13 +54,22 @@ namespace Heaton_PE26
             this.exitButton.Click += new EventHandler(ExitButton__Click);
             this.webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebBrowser1__DocumentCompleted);
 
+            this.FormClosing += new FormClosingEventHandler(Form__FormClosing);
+
+        }
+
+        
+        private void Form__FormClosing(object sender, FormClosingEventArgs e)
+        {
+            listener.Close();
+            thread.Abort();
+            Application.Exit();
         }
 
         private void ExitButton__Click(object sender, EventArgs e)
         {
             listener.Close();
             thread.Abort();
-            Application.Exit();
         }
 
         private void SendButton__Click(object sender, EventArgs e)
