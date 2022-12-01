@@ -44,6 +44,8 @@ namespace Heaton_Test3_2
         };
         bool gameStarted = false;
 
+
+        // Form constructor
         public Form1()
         {
             InitializeComponent();
@@ -80,21 +82,26 @@ namespace Heaton_Test3_2
                 }
             }
 
+            // Events for enlarging the image on hover
             pictureBox.MouseEnter += new EventHandler(PictureBox_MouseEnter);
             pictureBox.MouseLeave += new EventHandler(PictureBox_MouseLeave);
 
+            // Timer method every 500 ms
             timer.Tick += new EventHandler(Timer__Tick);
 
+            // Methods for updating the group box's text and changing anchor tags
             webBrowser.Navigated += new WebBrowserNavigatedEventHandler(WebBrowser__Navigated);
             webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebBrowser__DocumentCompleted);
 
         }
+
 
         // Exit button click event, closes the application
         private void ExitButton__Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
 
         // Occurs when a president radio button is selected
         private void PresidentRadioButton__CheckedChanged(object sender, EventArgs e)
@@ -115,6 +122,7 @@ namespace Heaton_Test3_2
             }
            
         }
+
 
         // For the filter radio buttons
         private void FilterRadioButton__CheckedChanged(object sender, EventArgs e)
@@ -157,11 +165,13 @@ namespace Heaton_Test3_2
                 // Check the last valid president radio button (the loop goes through the controls backwards, so I had to have the last one be checked)
                 lastValid.Checked = true;
             }
-
         }
 
+
+        // Timer method
         private void Timer__Tick(object sender, EventArgs e)
         {
+            // Check if the answers are correct
             bool passTest = true;
             foreach (Control c in this.Controls)
             {
@@ -171,6 +181,7 @@ namespace Heaton_Test3_2
                     TextBox textBox = (TextBox)c;
                     string correctValue = presidents[Int32.Parse(textBox.Tag.ToString()), 3];
 
+                    // If any text box's value does not match its answer, fail test and continue with timer method
                     if (Int32.Parse(textBox.Text) != Int32.Parse(correctValue))
                     {
                         passTest = false;
@@ -179,17 +190,23 @@ namespace Heaton_Test3_2
                 }
             }
 
+            // If all answers are correct
             if (passTest)
             {
+                // Stop timer, update the web browser, enable the exit button
                 timer.Stop();
                 webBrowser.Url = new Uri("https://www.youtube.com/embed/18212B4yfLg?autoplay=1");
                 exitButton.Enabled = true;
                 return;
             }
 
+            // If time is up
             if (toolStripProgressBar.Value == 0)
             {
+                // stop timer
                 timer.Stop();
+
+                // reset all text boxes to 0
                 foreach (Control c in this.Controls)
                 {
                     if (c.GetType() == typeof(TextBox))
@@ -199,21 +216,27 @@ namespace Heaton_Test3_2
                         textBox.Text = "0";
                     }
                 }
+
+                // Reset the progress bar, but the form in its pre-game state
                 toolStripProgressBar.Value = 240;
                 gameStarted = false;
                 return;
             }
 
+            // Decrement remaining time
             toolStripProgressBar.Value--;
         }
 
-        // Shows the tool tip at the beginning of the application
+
+        // Shows the tool tip for text boxes
         private void TextBox_MouseHover(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             toolTip.SetToolTip(textBox, "Which # President?");
         }
 
+
+        // Only allows numbers and backspace in the text boxes. Will also begin the timer
         private void TextBox_KeyPressed(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
@@ -221,6 +244,8 @@ namespace Heaton_Test3_2
                 e.Handled = true;
                 return;
             }
+
+            // start the game and timer
             if (!gameStarted)
             {
                 gameStarted = true;
@@ -228,52 +253,62 @@ namespace Heaton_Test3_2
             }
         }
 
+
+        // When attempting to leave a text box
+        private void TextBox__Validating(object sender, CancelEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string correctValue = presidents[Int32.Parse(textBox.Tag.ToString()), 3];
+
+            // If the inputted value is not correct, do not allow the user to leave
+            if (Int32.Parse(textBox.Text) != Int32.Parse(correctValue))
+            {
+                this.errorProvider.SetError(textBox, "Incorrect Value");
+                e.Cancel = true;
+            }
+            else
+            {
+                this.errorProvider.SetError(textBox, null);
+                e.Cancel = false;
+            }
+        }
+
+
+        // when mouse is hovered over the image, enlarge
         private void PictureBox_MouseEnter(object sender, EventArgs e)
         {
             PictureBox picBox = (PictureBox)sender;
             Size newSize = new Size(315, 370);
-            //picBox.MaximumSize = new Size(197, 264);
             picBox.MaximumSize = newSize;
             picBox.Size = newSize;
         }
+
+
+        // When taking mouse off of image, return to prior size
         private void PictureBox_MouseLeave(object sender, EventArgs e)
         {
             PictureBox picBox = (PictureBox)sender;
             Size newSize = new Size(197, 264);
-            //picBox.Size = newSize;
             picBox.MaximumSize = newSize;
         }
 
+
+        // When the web browser goes to a new site
         private void WebBrowser__Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
             // Change the web group box's title to the correct URL
             groupBoxWeb.Text = webBrowser.Url.ToString();
         }
 
-        private void TextBox__Validating(object sender, CancelEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string correctValue = presidents[Int32.Parse(textBox.Tag.ToString()), 3];
 
-            if (Int32.Parse(textBox.Text) != Int32.Parse(correctValue))
-            {
-                this.errorProvider.SetError(textBox, "Incorrect Value");
-                e.Cancel = true;
-            } 
-            else
-            {
-                this.errorProvider.SetError(textBox, null);
-                e.Cancel = false;
-            }            
-
-            
-        }
-
+        // Once a web page loads, replace all of the anchor tags' "title" attributes
         private void WebBrowser__DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             WebBrowser webBrowser = (WebBrowser)sender;
+            // Get every "a" tag
             HtmlElementCollection htmlElementCollection = webBrowser.Document.Body.GetElementsByTagName("a");
 
+            // Loop thru every "a" tag and change their title
             foreach (HtmlElement htmlElement in htmlElementCollection)
             {
                 htmlElement.SetAttribute("title", "Professor Schuh for President!");
