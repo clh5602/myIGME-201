@@ -16,6 +16,7 @@ namespace Heaton_Test3_3
         {
             InitializeComponent();
 
+            //Assign event handlers
             searchButton.Click += new EventHandler(SearchButton__Click);
             exitButton.Click += new EventHandler(ExitButton__Click);
 
@@ -30,8 +31,10 @@ namespace Heaton_Test3_3
 
         private void SearchButton__Click(object sender, EventArgs e)
         {
+
             string engine = "";
 
+            // Get the beginning of the URL based on radio button
             if (radioButton1.Checked)
             {
                 engine = "https://www.google.com/search?q=";
@@ -44,21 +47,26 @@ namespace Heaton_Test3_3
             {
                 engine = "http://www.youtube.com/results?search_query=";
             }
+
+            // Create new form, pass in the engine and user's query
             Form myForm = new browserForm(engine + searchBox.Text);
             myForm.Show();
         }
 
+        // When clicking the logo, Easter egg! Send the user to the definition of Futile
         private void Fyootle__Click(object sender, EventArgs e)
         {
             Form myForm = new browserForm("https://www.google.com/search?q=futile");
             myForm.Show();
         }
 
+        // close all forms
         private void ExitButton__Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        // Activate a random radio button from the collection
         private void RadioButton__Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -78,8 +86,10 @@ namespace Heaton_Test3_3
             }
         }
 
+        // Randomly drop keys from the text box
         private void TextBox__KeyPress(object sender, KeyPressEventArgs e)
         {
+            // 1 in 5 chance
             Random rnd = new Random();
             int failNum = rnd.Next(0, 5);
 
