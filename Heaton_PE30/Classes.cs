@@ -405,6 +405,18 @@ namespace BTree
         // Print the tree in descending order
         public static void TraverseDescending(BTree node)
         {
+            if (node != null)
+            {
+                TraverseDescending(node.ltChild);
+
+                TraverseDescending(node.gteChild);
+
+                if (node.isData)
+                {
+                    PrintThisNode(node);
+                }
+
+            }
         }
         //////////////////////////////////////////////////////////
     }
